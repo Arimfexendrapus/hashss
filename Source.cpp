@@ -1,7 +1,6 @@
 #include <string>
 #include <unordered_map>
 #include <iostream>
-#include <fstream>
 
 using namespace std;
 
@@ -12,7 +11,8 @@ int main()
 	cout << ("Set your password. REMEMBER IT! IT IS NOT STORED: "); 
 	cin >> password;
 
-	hash<string> Pwordhash; size_t HashedString = Pwordhash(password);
+	hash<string> Pwordhash; 
+	size_t HashedString = Pwordhash(password);
 
 	cout << "\ntry to guess your hash you dweeb: "; 
 	cin >> HashGuess;
@@ -25,12 +25,12 @@ int main()
 	cout << ("Alright nerd, log in now: ");
 	cin >> passwordAttempt;
 
-	size_t HashedStringguess = Pwordhash(passwordAttempt);
+	size_t HashedStringGuess = Pwordhash(passwordAttempt);
 
-	if (HashedString == HashedStringguess)
+	if (HashedString == HashedStringGuess)
 		cout << ("Yep, you got it\n");
 	else
 		cout << ("WRONG\n");
 
-	cout << "heres the hash you shoulduv guessed: " << HashedString << "\n";
+	cout << "here's the hash you should have guessed: " << HashedString << "\n";
 }
