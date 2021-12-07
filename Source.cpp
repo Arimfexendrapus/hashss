@@ -87,7 +87,7 @@ int main()
 
     // asking the shall we play a game question and recieving an answer
     {
-        cout << "SHALL WE PLAY A GAME?" << endl << "YES / NO" << endl;
+        cout << "SHALL WE PLAY A GAME?\n"<< "YES / NO\n";
         cin >> ans;
     }
 
@@ -95,7 +95,7 @@ int main()
     {
         while (ans.compare("yes") != 0 && ans.compare("no") != 0 && ans.compare("YES") != 0 && ans.compare("NO") != 0)
         {
-            cout << "TRY AGAIN" << endl << "SHALL WE PLAY A GAME?" << endl << "YES / NO" << endl;
+            cout << "TRY AGAIN\n" << "SHALL WE PLAY A GAME?\n" << "YES / NO\n";
             cin >> ans;
         }
     }
@@ -118,13 +118,13 @@ int main()
 
         // asks whether the user wants to play hangman
     {
-        cout << "HOW ABOUT A NICE FRIENDLY GAME OF HANGMAN?" << endl << "YES / NO" << endl;
+        cout << "HOW ABOUT A NICE FRIENDLY GAME OF HANGMAN?\n" << "YES / NO\n";
         cin >> ans;
         //input validation
         {
             while (ans.compare("yes") != 0 && ans.compare("no") != 0 && ans.compare("YES") != 0 && ans.compare("NO") != 0)
             {
-                cout << "TRY AGAIN" << endl << "HOW ABOUT A NICE FRIENDLY GAME OF HANGMAN? THIS TIME, YOU'LL BE GUESSING A HASH" << endl << "YES / NO" << endl;
+                cout << "TRY AGAIN\n" << "HOW ABOUT A NICE FRIENDLY GAME OF HANGMAN? THIS TIME, YOU'LL BE GUESSING A HASH\n" << "YES / NO\n";
                 cin >> ans;
             }
             //converting upercase yes and no to lowercase 
@@ -139,12 +139,12 @@ int main()
             //determing to play hangman or not
             if (ans.compare("yes") == 0)
             {
-                cout << "WONDERFUL, LET US BEGIN." << endl << endl;
+                cout << "WONDERFUL, LET US BEGIN.\n\n";
                 hangman();
             }
             else if (ans.compare("no") == 0)
             {
-                cout << "WHAT A SHAME; GOODBYE." << endl;
+                cout << "WHAT A SHAME; GOODBYE.\n";
             }
         }
     }
@@ -154,17 +154,13 @@ int main()
 
     else if (ans.compare("no") == 0)
     {
-        cout << "VERY WELL; GOODBYE." << endl;
+        cout << "VERY WELL; GOODBYE.\n";
     }
 
     return 0;
 
 
 }
-
-
-
-
 
 
 
@@ -178,9 +174,9 @@ the_beginning:
 
 
     //instructions
-    cout << "THE GOAL IS TO GUESS THE RIGHT HASH, ONE NUMBER AT A TIME; YOU HAVE 10 INCORRECT GUESSES BEFORE YOU LOSE." << endl;
+    cout << "THE GOAL IS TO GUESS THE RIGHT HASH, ONE NUMBER AT A TIME; YOU HAVE 10 INCORRECT GUESSES BEFORE YOU LOSE.\n";
 
-    cout << ("SET YOUR WORD TO BE HASHED: ");
+    cout << ("\nSET YOUR WORD TO BE HASHED: ");
     cin >> cword;
 
     hash<string> Pwordhash;
@@ -192,7 +188,7 @@ the_beginning:
     //obtaining the word length and outputting blanks
     int word_length;
     word_length = cword.size();
-    cout << "THE HASH IS " << word_length << " NUMBERS LONG" << endl;
+    cout << "THE HASH IS " << word_length << " NUMBERS LONG\n";
     blanks.insert(0, word_length, '-');
 
     //showing where the spaces are
@@ -202,12 +198,6 @@ the_beginning:
         int location = -1;
         for (int i = 0; i < correct_or_not(' ', word_length, cword); i++)
         {
-            /*
-            if (location>-1)
-            {
-                location++;
-            }
-            */
             location = loc_of_correct(location, ' ', word_length, cword);
             blanks.replace(location, 1, string(1, ' '));
 
@@ -220,23 +210,23 @@ the_beginning:
     cout << blanks;
     //getting guesses and locations of correct ones 
 correct:
-    cout << endl << "GUESS YOUR LETTER." << endl;
+    if (incorrectletters != "")
+    {
+        cout << "\nYOU HAVE PREVIOUSLY GUESSED THESE INCORRECT NUMBERS: " << incorrectletters << endl;
+    }
+    cout << "\nGUESS YOUR NUMBER: ";
     //the is where i add the option #4 in the B program
-    cout << "YOU HAVE PREVIOUSLY GUESSED THESE INCORRECT LETTERS: " << incorrectletters << endl;
+
+    
     cin >> letter;
     //adding option #2 
     if (correct_or_not(letter, word_length, cword) > 0)
     {
-        cout << "YOU GUESSED CORRECTLY" << endl;
+        cout << "YOU GUESSED CORRECTLY\n";
         int location = -1;
         for (int i = 0; i < correct_or_not(letter, word_length, cword); i++)
         {
-            /*
-            if (location>-1)
-            {
-                location=location+2;
-            }
-            */
+
             location = loc_of_correct(location, letter, word_length, cword);
             blanks.replace(location, 1, string(1, letter));
 
@@ -256,20 +246,20 @@ incorrect:
         //adding option #5
         if (incorrectletters.find(string(1, letter)) != -1)
         {
-            cout << "YOU HAVE ALREAD GUESSED THIS LETTER; TRY AGAIN" << endl;
+            cout << "YOU HAVE ALREAD GUESSED THIS NUMBER; TRY AGAIN\n";
             goto correct;
         }
         incorrect++;
         if (incorrect < 11)
         {
             //this is where i add options #7 and #1
-            cout << "YOU GUESSED INCORRECTLY" << endl << "YOU ADDED A " << body_parts((incorrect)) << endl << "YOU HAVE " << (10 - incorrect) << " INCORRECT GUESSES REMAINING." << endl << blanks << endl;
+            cout << "YOU GUESSED INCORRECTLY\n" << "YOU ADDED A " << body_parts((incorrect)) <<  "\nYOU HAVE " << (10 - incorrect) << " INCORRECT GUESSES REMAINING.\n" << blanks << endl;
         }
         incorrectletters.append(1, letter);
         if (incorrect > 10)
         {
             //option #3
-            cout << "YOU ADDED THE NOOSE & YOUR MAN HAS BEEN HANGED" << endl << "GAME OVER" << endl << "YOU LOSE" << endl << "THE WORD OR PHRASE THAT YOU WERE TRYING TO GUESS WAS " << cword << "." << endl;
+            cout << "YOU ADDED THE NOOSE & YOUR MAN HAS BEEN HANGED\n" << "GAME OVER\n" << "YOU LOSE\n" << "THE WORD OR PHRASE THAT YOU WERE TRYING TO GUESS WAS " << cword << ".\n";
             goto play_again;
         }
         goto correct;
@@ -277,15 +267,16 @@ incorrect:
 
 guessed_word:
     //option #3
-    cout << endl << "YOU HAVE CORRECTLY GUESSED THE WORD OR PHRASE." << endl << "THE WORD OR PHRASE WAS " << blanks << "." << endl << endl << "CONGRADULATIONS." << endl << endl;
+    cout << "\nYOU HAVE CORRECTLY GUESSED THE HASH.\n" << "THE HASH WAS " << blanks << ".\n\n" << "CONGRADULATIONS.\n\n";
+
 play_again:
-    cout << "PLAY AGAIN?" << endl << "YES / NO" << endl;
+    cout << "PLAY AGAIN?\n" << "YES / NO\n";
     cin >> ans;
 
     {
         while (ans.compare("yes") != 0 && ans.compare("no") != 0 && ans.compare("YES") != 0 && ans.compare("NO") != 0)
         {
-            cout << "TRY AGAIN" << endl << "SHALL WE PLAY A GAME?" << endl << "YES / NO" << endl;
+            cout << "TRY AGAIN\n" << "SHALL WE PLAY A GAME?\n" << "YES / NO\n";
             cin >> ans;
         }
     }
@@ -309,7 +300,7 @@ play_again:
     }
     if (ans.compare("no") == 0)
     {
-        cout << "VERY WELL; GOODBYE." << endl;
+        cout << "VERY WELL; GOODBYE.\n";
     }
 
 
@@ -360,46 +351,7 @@ int loc_of_correct(int w, char x, int y, string z)
 
 string body_parts(int x)
 {
-    string part;
-    if (x == 1)
-    {
-        part = "HEAD";
-    }
-    else if (x == 2)
-    {
-        part = "TORSO";
-    }
-    else if (x == 3)
-    {
-        part = "LEFT ARM";
-    }
-    else if (x == 4)
-    {
-        part = "RIGHT ARM";
-    }
-    else if (x == 5)
-    {
-        part = "LEFT LEG";
-    }
-    else if (x == 6)
-    {
-        part = "RIGHT LEG";
-    }
-    else if (x == 7)
-    {
-        part = "LEFT EYE";
-    }
-    else if (x == 8)
-    {
-        part = "RIGHT EYE";
-    }
-    else if (x == 9)
-    {
-        part = "NOSE";
-    }
-    else if (x == 10)
-    {
-        part = "FROWN";
-    }
+    string parts[] = {"HEAD", "TORSO", "LEFT ARM", "RIGHT ARM", "LEFT LEG", "RIGHT LEG", "LEFT EYE", "RIGHT EYE", "NOSE", "FROWN"};
+    string part = parts[x-1];
     return part;
 }
