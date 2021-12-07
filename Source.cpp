@@ -1,5 +1,16 @@
 
+/*
 
+Names : Tyler Felts && Connor Bass
+Date : 2021-12-07
+Class : Algorithms
+
+Description :
+This is a Progect that utilizes hashing
+
+Target grade : 1000%
+
+*/
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -7,10 +18,6 @@
 #include <math.h>
 #include <cmath>
 #include <unordered_map>
-
-
-
-
 
 /*
 
@@ -51,9 +58,6 @@ int main()
 	cout << "here's the hash you should have guessed: " << HashedString << "\n";
 }
 */
-
-
-
 
 using namespace std;
 //the hangman game
