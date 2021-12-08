@@ -199,7 +199,7 @@ incorrect:
     }
 guessed_word:
     //option #3
-    cout << "\nYOU HAVE CORRECTLY GUESSED THE HASH.\n" << "THE HASH WAS " << blanks << ".\n\n" << "CONGRADULATIONS.\n\n";
+    cout << "\nYOU HAVE CORRECTLY GUESSED THE HASH.\n" << "THE HASH WAS " << blanks << ".\n\n" << "CONGRATULATIONS.\n\n";
 play_again:
     cout << "PLAY AGAIN?\n" << "YES / NO\n";
     cin >> ans;
